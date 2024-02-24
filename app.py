@@ -13,7 +13,12 @@ def vader_analyse():
 	text = request.form['text']
 	senti_dict = sentimentAnalyzer.polarity_scores(text)
 
-	return str(senti_dict["compound"])
+	senti_dict["compound"] = round(senti_dict["compound"]*100, 1)
+	senti_dict["neg"] = round(senti_dict["neg"]*100, 1)
+	senti_dict["neu"] = round(senti_dict["neu"]*100, 1)
+	senti_dict["pos"] = round(senti_dict["pos"]*100, 1)
+
+	return senti_dict
 
 if __name__=='__main__':
 	app.run()
