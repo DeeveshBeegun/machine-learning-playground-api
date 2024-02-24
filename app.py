@@ -1,6 +1,9 @@
+import nltk
 from flask import Flask, request, jsonify
 from nltk.sentiment import SentimentIntensityAnalyzer
 from tqdm.notebook import tqdm
+
+nltk.download('vader_lexicon')
 
 app = Flask(__name__)
 
