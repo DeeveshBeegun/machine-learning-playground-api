@@ -20,6 +20,12 @@ def vader_analyse():
 
 	return senti_dict
 
+@app.route('/duplicate', methods=['POST'])
+def dupliate():
+	text = request.form['text']
+
+	return (text + " ") * num_duplicates
+
 if __name__=='__main__':
 	app.run()
 	create_app()
