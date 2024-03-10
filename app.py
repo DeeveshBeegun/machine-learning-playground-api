@@ -23,8 +23,9 @@ def vader_analyse():
 @app.route('/duplicate', methods=['POST'])
 def dupliate():
 	text = request.form['text']
+	num_duplicates = request.form['times']
 
-	return (text + " ") * num_duplicates
+	return (text + " ") * int(num_duplicates)
 
 if __name__=='__main__':
 	app.run()
