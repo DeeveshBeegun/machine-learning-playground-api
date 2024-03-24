@@ -33,6 +33,7 @@ def dupliate():
 def summarize():
 	text = request.form['text']
 	summarizer = pipeline('summarization', model="sshleifer/distilbart-cnn-12-6")
+	
 
 	return summarizer(text, do_sample=False)
 
