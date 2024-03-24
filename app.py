@@ -2,7 +2,7 @@ import nltk
 from flask import Flask, request, jsonify
 from nltk.sentiment import SentimentIntensityAnalyzer
 from tqdm.notebook import tqdm
-from transformer import pipeline
+from transformers import pipeline
 
 nltk.download('vader_lexicon')
 
