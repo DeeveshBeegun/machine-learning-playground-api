@@ -2,6 +2,7 @@ import nltk
 from flask import Flask, request, jsonify
 from nltk.sentiment import SentimentIntensityAnalyzer
 from tqdm.notebook import tqdm
+from transformer import pipeline
 
 nltk.download('vader_lexicon')
 
@@ -26,6 +27,14 @@ def dupliate():
 	num_duplicates = request.form['times']
 
 	return (text + " ") * int(num_duplicates)
+
+
+@app.route('/summarize', methods=['POST'])
+def summarize():
+	text = request.form['text']
+	summarizer = pipeline('summarization', model="sshleifer/distilbart-cnn-12-6")
+
+	return summarizer(text, do_sample=False)
 
 if __name__=='__main__':
 	app.run()
